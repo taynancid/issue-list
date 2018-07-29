@@ -1,15 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import "./styles/global";
+import Main from "./pages/Main";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <header>
-          <h1>Issue List</h1>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => <Main />;
 
 export default App;
