@@ -1,32 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Container, Repository } from "./style";
+import { Container, Repository, Form } from "./style";
 
-const SideBar = ({ repositories }) => (
-  <Container>
-    {repositories.map(repository => (
-      <Repository key={repository.id}>
-        <header>
-          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
-          <strong> {repository.name} </strong>
-          <small> {repository.owner.login} </small>
-        </header>
-      </Repository>
-    ))}
-  </Container>
-);
+class SideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
-SideBar.propTypes = {
-  repositories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      owner: PropTypes.shape({
-        login: PropTypes.string,
-        avatar_url: PropTypes.string
-      })
-    })
-  ).isRequired
-};
+  handleInputChange(e) {
+    this.props.OnInputChange(e.target.value);
+  }
+
+  render() {
+    return (
+      <Container>
+        <Form>
+          <input
+            type="text"
+            placeholder="usuário/repository"
+            onChange={this.handleInputChange}
+          />
+          <button type="submit">"OK"</button>
+        </Form>
+        {this.props.repositories.map(repository => (
+          <Repository key={repository.id}>
+            <header>
+              <img
+                src={repository.owner.avatar_url}
+                alt={repository.owner.login}
+              />
+              <strong> {repository.name} </strong>
+              <small> {repository.owner.login} </small>
+            </header>
+          </Repository>
+        ))}
+      </Container>
+    );
+  }
+}
 
 export default SideBar;

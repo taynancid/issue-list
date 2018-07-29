@@ -4,43 +4,49 @@ import SideBar from "../../components/side-bar";
 import api from "../../services/api";
 
 export default class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
   state = {
     repoInput: "",
     repositories: []
   };
 
-  handleAddRepo = async e => {
-    e.preventDefault();
+  handleInputChange(input) {
+    this.setState({ repoInput: input });
+  }
 
-    const { data: repository } = await api.get(
-      `/repos/${this.state.repoInput}`
-    );
+  // handleAddRepo = async e => {
+  //   e.preventDefault();
 
-    this.setState({
-      repositories: [...this.state.repositories, repository],
-      repoInput: ""
-    });
-  };
+  //   const { data: repository } = await api.get(
+  //     `/repos/${this.state.repoInput}`
+  //   );
+
+  //   this.setState({
+  //     repositories: [...this.state.repositories, repository],
+  //     repoInput: ""
+  //   });
+  // };
 
   render() {
     return (
       <Container>
-        <Form onSubmit={this.handleAddRepo}>
+        {/* <Form onSubmit={this.handleAddRepo}>
           <input
             type="text"
             placeholder="usuário/repository"
             value={this.state.repoInput}
             onChange={e => this.setState({ repoInput: e.target.value })}
           />
-          <button type="submit">
-            {this.state.loading ? (
-              <i className="fa fa-spinner fa-pulse" />
-            ) : (
-              "OK"
-            )}
-          </button>
-        </Form>
-        <SideBar repositories={this.state.repositories} />
+          <button type="submit">"OK"</button>
+        </Form> */}
+        <SideBar
+          repositories={this.state.repositories}
+          OnInputChange={this.handleInputChange}
+        />
       </Container>
     );
   }
