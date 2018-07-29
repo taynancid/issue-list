@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Form } from "./style";
+import { Container } from "./style";
 import SideBar from "../../components/side-bar";
 import api from "../../services/api";
 
@@ -18,34 +18,34 @@ export default class Main extends Component {
     this.setState({ repoInput: input });
   }
 
-  // handleAddRepo = async e => {
-  //   e.preventDefault();
+  handleAddRepo = async e => {
+    const { data: repository } = await api.get(
+      `/repos/${this.state.repoInput}`
+    );
 
-  //   const { data: repository } = await api.get(
-  //     `/repos/${this.state.repoInput}`
-  //   );
+    let add = true;
+    for (let i in this.state.repositories) {
+      if (this.state.repositories[i].id === repository.id) {
+        add = false;
+        continue;
+      }
+    }
 
-  //   this.setState({
-  //     repositories: [...this.state.repositories, repository],
-  //     repoInput: ""
-  //   });
-  // };
+    if (add) {
+      this.setState({
+        repositories: [...this.state.repositories, repository],
+        repoInput: ""
+      });
+    }
+  };
 
   render() {
     return (
       <Container>
-        {/* <Form onSubmit={this.handleAddRepo}>
-          <input
-            type="text"
-            placeholder="usuário/repository"
-            value={this.state.repoInput}
-            onChange={e => this.setState({ repoInput: e.target.value })}
-          />
-          <button type="submit">"OK"</button>
-        </Form> */}
         <SideBar
           repositories={this.state.repositories}
           OnInputChange={this.handleInputChange}
+          OnSubmitRepo={this.handleAddRepo}
         />
       </Container>
     );

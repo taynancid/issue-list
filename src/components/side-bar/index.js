@@ -1,27 +1,32 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Container, Repository, Form } from "./style";
 
 class SideBar extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleAddRepo = this.handleAddRepo.bind(this);
   }
 
   handleInputChange(e) {
     this.props.OnInputChange(e.target.value);
   }
 
+  handleAddRepo(e) {
+    e.preventDefault();
+    this.props.OnSubmitRepo();
+  }
+
   render() {
     return (
       <Container>
-        <Form>
+        <Form onSubmit={this.handleAddRepo}>
           <input
             type="text"
-            placeholder="usuário/repository"
+            placeholder="user/repository"
             onChange={this.handleInputChange}
           />
-          <button type="submit">"OK"</button>
+          <button type="submit">OK</button>
         </Form>
         {this.props.repositories.map(repository => (
           <Repository key={repository.id}>
