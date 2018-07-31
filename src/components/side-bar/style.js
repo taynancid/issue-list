@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 50px;
+  width: 320px;
+  height: 100%;
+  padding: 30px;
+  background-color: chocolate;
 `;
 
 export const Repository = styled.div`
   width: 250px;
   background: #fff;
   border-radius: 3px;
-  margin: 0px 10px;
+  margin: 10px 10px;
 
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ export const Repository = styled.div`
 `;
 
 export const Form = styled.form`
-  margin-top: 20px;
+  flex-shrink: 0;
   width: 100%;
   max-width: 400px;
   display: flex;
@@ -67,21 +67,20 @@ export const Form = styled.form`
   input {
     flex: 1;
     height: 55px;
-    padding: 0 20px;
-    background: #fff;
+    background: #eee;
     border: 0;
     font-size: 18px;
     color: #444;
     border-radius: 3px;
 
-    border: ${props => (props.withError ? "2px solid red" : 0)};
+    border: ${props => (props.withError ? '2px solid red' : 0)};
   }
   button {
     height: 55px;
     padding: 0 20px;
     margin-left: 10px;
     background: #63f5b0;
-    color: #fff;
+    color: #59ea9a;
     border: 0;
     font-size: 20px;
     font-weight: bold;

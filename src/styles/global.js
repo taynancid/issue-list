@@ -1,6 +1,6 @@
-import { injectGlobal } from "styled-components";
+import { injectGlobal } from 'styled-components';
 
-import "font-awesome/css/font-awesome.css";
+import 'font-awesome/css/font-awesome.css';
 
 injectGlobal`
   *{
@@ -11,7 +11,6 @@ injectGlobal`
   }
 
   body {
-    background: gray;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: sans-serif;
