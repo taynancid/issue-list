@@ -9,51 +9,34 @@ export const Container = styled.div`
 
 export const Repository = styled.div`
   width: 250px;
+  height: 75px;
   background: #fff;
   border-radius: 3px;
   margin: 10px 10px;
 
-  display: flex;
-  flex-direction: column;
-
   header {
-    padding: 30px;
+    height: 100%;
+    flex-wrap: wrap;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-content: flex-start;
 
     img {
       width: 64px;
     }
 
     strong {
+      margin-left: 10px;
+      margin-top: 7px;
       font-size: 24px;
-      margin-top: 10px;
     }
 
     small {
+      margin-left: 10px;
       font-size: 14px;
       color: #666;
-    }
-  }
-
-  ul {
-    list-style: none;
-
-    li {
-      font-weight: bold;
-      padding: 12px 20px;
-
-      small {
-        font-weight: normal;
-        font-size: 12px;
-        color: #999;
-        font-style: italic;
-      }
-
-      &:nth-child(2n-1) {
-        background: #f5f5f5;
-      }
     }
   }
 `;
