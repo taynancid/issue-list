@@ -8,7 +8,6 @@ class RepoHeader extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value);
     this.props.onChange(e.target.value);
   }
 

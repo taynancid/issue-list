@@ -12,6 +12,17 @@ class IssueList extends Component {
     this.props.OnIssueTypeChange(e);
   }
 
+  editIssueTitle(str) {
+    if (str.length > 27) {
+      return str.substring(0, 24).concat('...');
+    }
+    return str;
+  }
+
+  goToIssue(url) {
+    window.open(url, '_blank');
+  }
+
   render() {
     return (
       <Container>
@@ -23,7 +34,18 @@ class IssueList extends Component {
         />
         {this.props.issues
           .filter(issue => this.props.issueType.includes(issue.state))
-          .map(issue => <Issue key={issue.id}>{issue.title}</Issue>)}
+          .map(issue => (
+            <Issue key={issue.id}>
+              <img src={issue.user.avatar_url} alt={issue.name} />
+              <body>
+                <strong> {this.editIssueTitle(issue.title)} </strong>
+                <small> {issue.user.login} </small>
+                <button type="button" onClick={() => window.open(issue.html_url, '_blank')}>
+                  {'Go to issue'}
+                </button>
+              </body>
+            </Issue>
+          ))}
       </Container>
     );
   }
