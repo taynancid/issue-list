@@ -3,10 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 75px;
-  background-color: pink;
+  background-color: white;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-content: center;
 `;
 
@@ -38,6 +37,6 @@ export const Info = styled.div`
   }
 `;
 
-export const select = styled.div`
-  color: black;
+export const Select = styled.div`
+  width: 30%;
 `;

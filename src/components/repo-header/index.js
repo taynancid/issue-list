@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 import { Container, Info } from './style';
+
+const options = [
+  { value: 'closed', label: 'Closed' },
+  { value: 'open', label: 'Open' },
+  { value: 'all', label: 'All' },
+];
+
+// const customStyles = {
+//   control: () => ({
+//     // none of react-selects styles are passed to <View />
+//     width: 30,
+//   }),
+// };
 
 class RepoHeader extends Component {
   constructor(props) {
@@ -7,9 +21,10 @@ class RepoHeader extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    this.props.onChange(e.target.value);
-  }
+  handleChange = (option) => {
+    console.log(Option);
+    this.props.onChange(option.value);
+  };
 
   render() {
     return (
@@ -19,11 +34,7 @@ class RepoHeader extends Component {
           <strong> {this.props.repoName} </strong>
           <small> {this.props.repoOwn} </small>
         </Info>
-        <select onChange={this.handleChange}>
-          <option value="all">All</option>
-          <option value="open">Open</option>
-          <option value="closed">Closed</option>
-        </select>
+        <Select value="all" options={options} onChange={this.handleChange} />
       </Container>
     );
   }
